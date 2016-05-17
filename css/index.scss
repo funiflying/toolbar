@@ -1,0 +1,165 @@
+@import "mixin";
+@import "iconfont.css";
+$color:#ddd;
+$toolbar-size:55px;
+$tool-bar-color:#ffffff;
+@mixin toolbar-item($post,$hover){
+  background-position: 0 $post;
+  &:hover{
+    background-position: 0 $hover;
+  }
+}
+
+body{
+  color: $color;
+  font-family: "微软雅黑";
+
+}
+a{
+  color:$color;
+  text-decoration: none;
+}
+.toolbar{
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+}
+
+.toolbar-item{
+  display: block;
+  width: $toolbar-size;
+  height: $toolbar-size;
+  color: $color;
+  text-decoration: none;
+  background-image: url("http://static.mukewang.com/static/img/common/elevator.png");
+  background-repeat: no-repeat;
+  margin-top: 1px;
+  position: relative;
+  @include transition(background-position 1s);
+  &:hover{
+    .toolbar-layout{
+      @include opacity(1);
+      @include transform(1);
+    }
+  }
+}
+.toolbar-weixin{
+  @include toolbar-item(-860px,-922px);
+  .toolbar-layout{
+    height: 212px;
+    background-position: 0 0;
+  }
+}
+.toolbar-feedback{
+
+  @include toolbar-item(-426px,-488px);
+}
+.toolbar-app{
+  @include toolbar-item(-550px,-612px);
+  .toolbar-layout{
+    height: 194px;
+    background-position: 0 -222px;
+  }
+}
+.toolbar-top{
+  @include toolbar-item(-674px,-736px);
+}
+.toolbar-layout{
+  position: absolute;
+  width: 172px;
+  right: $toolbar-size - 4;
+  bottom: -7px;
+  @include opacity(0);
+  @include transform_origin(95% 95%);
+  @include transform(0.01);
+  background-image: url('http://static.mukewang.com/static/img/common/elevator.png');
+  background-repeat: no-repeat;
+  @include transition(all 1s)
+
+}
+.tool-bar{
+  position: fixed;
+  right: 100px;
+  bottom: 10px;
+}
+
+.tool-bar .tool-bar-item{
+  display: block;
+  width: $toolbar-size;
+  height: $toolbar-size;
+  margin-top: 1px;
+  position: relative;
+  font-size: 12px;
+  text-align: center;
+  &:hover{
+    .iconfont{
+      top: -$toolbar-size;
+    }
+    .tool-bar-text{
+      top: 0;
+    }
+    .tool-bar-layer{
+      @include  transform(1);
+      @include opacity(1)
+    }
+  }
+
+}
+.tool-bar-btn{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: $toolbar-size;
+  width: $toolbar-size;
+  overflow: hidden;
+  .iconfont{
+    font-size: 30px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: $toolbar-size;
+    width: $toolbar-size;
+    background:#D0D6D9;
+    color: $tool-bar-color;
+    line-height: $toolbar-size;
+    @include transition(top 1s);
+
+  }
+  .tool-bar-text{
+    font-size: 12px;
+    position: absolute;
+    left: 0;
+    top: $toolbar-size;
+    height: $toolbar-size;
+    width: $toolbar-size;
+    background:#98a1a6;
+    color: #ffffff;
+    line-height: 1.2;
+    padding-top: 12px;
+    @include transition(top 1s);
+  }
+}
+.tool-bar-layer{
+  position: absolute;
+  width: 172px;
+  right: $toolbar-size + 4;
+  bottom: -7px;
+  @include opacity(0);
+  @include transform_origin(95% 95%);
+  @include transform(0.01);
+  background-image: url('http://static.mukewang.com/static/img/common/elevator.png');
+  background-repeat: no-repeat;
+  @include transition(all 1s);
+
+}
+.tool-bar-wechat{
+  height: 212px;
+  background-position: 0 0;
+}
+.tool-bar-app{
+  height: 194px;
+  background-position: 0 -222px;
+}
+.tool-bar-item.scroll-top{
+  display: none ;
+}
